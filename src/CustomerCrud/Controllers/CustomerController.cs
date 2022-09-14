@@ -55,4 +55,15 @@ public class CustomerController : ControllerBase
 
         return Ok($"Customer {id} updated");
     }
+
+    [HttpDelete("{id}")]
+    public ActionResult Delete(int id)
+    {
+        var customerDeleted = _db.Delete(id);
+
+        if (!customerDeleted) 
+            return NotFound("Customer Not Found");
+
+        return Ok($"Customer {id} deleted");
+    }
 }

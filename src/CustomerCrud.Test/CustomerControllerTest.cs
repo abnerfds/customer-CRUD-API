@@ -104,6 +104,20 @@ public class CustomersControllerTest : IClassFixture<WebApplicationFactory<Progr
     [Fact]
     public async Task DeleteTest()
     {
-        throw new NotImplementedException();
+        _repositoryMock.SetupSequence(st => st.Delete(1))
+            .Returns(true);
+        
+        var res = await _client.DeleteAsync("/controller/1");
+        var content = await res.Content.ReadAsStringAsync();
+
+        res.StatusCode.Should().Be(HttpStatusCode.OK);
+        content.Should().Be("Customer 1 deleted");
+
+        // Caso de erro...
+        // var resError = await _client.DeleteAsync("/controller/1");
+        // var contentError = await res.Content.ReadAsStringAsync();
+
+        // resError.StatusCode.Should().Be(HttpStatusCode.NotFound);
+        // contentError.Should().Be("Customer Not Found");
     }
 }
