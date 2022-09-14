@@ -35,4 +35,13 @@ public class CustomerController : ControllerBase
         return Ok(CustomerOne);
     }
 
+   [HttpPost]
+    public ActionResult Create(CustomerRequest request)
+    {
+        // Não consegui testar no Postman...Desativar SSL
+        var customer = new Customer(_db.GetNextIdValue(), request);
+        _db.Create(customer);
+        return CreatedAtAction("GetById", new { id = customer.Id }, customer);
+    }
+
 }
