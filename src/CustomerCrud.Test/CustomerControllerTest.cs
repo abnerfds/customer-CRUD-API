@@ -76,12 +76,29 @@ public class CustomersControllerTest : IClassFixture<WebApplicationFactory<Progr
         var content = await res.Content.ReadFromJsonAsync<Customer>();
 
         res.StatusCode.Should().Be(HttpStatusCode.Created);
+        
+    //     content.Name.Should().Be(customerRequest[0].Name);
+    //     content.CPF.Should().Be(customerRequest[0].CPF);
+    //     content.Transactions.Should().BeEquivalentTo(customerRequest[0].Transactions);
+
+    // Ver um pouco mais...
+    //     _repositoryMock.Verify(db => db.GetNextIdValue(), Times.Once);
+    //     _repositoryMock.Verify(db => db.Create(It.Is<Customer>(r => r.Id == 1)), Times.Once);
     }
 
     [Fact]
     public async Task UpdateTest()
     {
-        throw new NotImplementedException();
+        var customerRequest = AutoFaker.Generate<CustomerRequest>(1);
+        _repositoryMock.Setup(st => st.Update(1, It.IsAny<Object>())).Returns(true);
+        
+        var res = await _client.PutAsJsonAsync("/controller/1", customerRequest[0]);
+        var content = await res.Content.ReadAsStringAsync();
+
+        res.StatusCode.Should().Be(HttpStatusCode.OK);
+        content.Should().Be("Customer 1 updated");
+
+        // _repositoryMock.Verify(db => db.Update(1, It.IsAny<Object>()), Times.Once);
     }
 
     [Fact]
