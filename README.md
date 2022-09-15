@@ -17,7 +17,7 @@
   3. Subindo a API
   
   - Entre na pasta `cd CustomerCrud`.
-  - Execute o comando: `dotnet restore`.
+  - Execute o comando: `dotnet run`.
 
 <details>
   <summary><strong>🛠 Testes</strong></summary><br />
