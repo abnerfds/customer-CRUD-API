@@ -18,6 +18,11 @@
   
   - Entre na pasta `cd CustomerCrud`.
   - Execute o comando: `dotnet run`.
+  
+  4. Rodando os testes
+  
+  - Entre na pasta `cd CustomerCrud.Test`.
+  - Execute o comando: `dotnet test`.
 
 <details>
   <summary><strong>🛠 Testes</strong></summary><br />
