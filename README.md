@@ -11,12 +11,12 @@
 
   2. Instale as dependências
   
-  - Entre na pasta com `cd src/`.
+  - Entre na pasta com `cd src`.
   - Execute o comando: `dotnet restore`.
   
   3. Subindo a API
   
-  - Entre na pasta `cd CustomerCrud/`.
+  - Entre na pasta `cd CustomerCrud`.
   - Execute o comando: `dotnet restore`.
 
 <details>
